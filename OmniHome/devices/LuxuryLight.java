@@ -8,13 +8,13 @@ public class LuxuryLight extends SmartDevice implements SmartLight {
     private String color = "Warm White";
 
     public LuxuryLight(String id) {
-        super(id, "Luxury Phillips Hue Gen4");
+        super(id, "Luxury Light Premium");
     }
 
     @Override
     public void turnOn() {
         this.isOn = true;
-        this.brightness = 100; // Luxury lights fade on to 100%
+        this.brightness = 100;
         System.out.println(getName() + " is gently fading ON.");
     }
 

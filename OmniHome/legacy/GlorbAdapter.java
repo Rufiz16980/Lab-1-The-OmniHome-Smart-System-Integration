@@ -3,8 +3,7 @@ package az.edu.ada.modules.module04.OmniHome.legacy;
 import az.edu.ada.modules.module04.OmniHome.interfaces.SmartThermostat;
 import az.edu.ada.modules.module04.OmniHome.interfaces.SmartDevice;
 
-// It extends SmartDevice to fit into your device list
-// It implements SmartThermostat so factories can return it if needed
+
 public class GlorbAdapter extends SmartDevice implements SmartThermostat {
 
     private final GlorbThermostat glorb;
@@ -28,7 +27,7 @@ public class GlorbAdapter extends SmartDevice implements SmartThermostat {
 
     @Override
     public void setTemperature(double celsius) {
-        // CONVERSION LOGIC: (C * 9/5) + 32
+        // formula: (C * 9/5) + 32
         int fahrenheit = (int) ((celsius * 9.0 / 5.0) + 32);
 
         System.out.println("Adapter converting " + celsius + "°C -> " + fahrenheit + "°F");

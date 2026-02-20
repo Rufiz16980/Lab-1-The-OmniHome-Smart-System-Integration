@@ -10,6 +10,8 @@ public class BudgetLight extends SmartDevice implements SmartLight {
         super(id, "Generic Budget Bulb");
     }
 
+    // assuming luxury and budget lights require
+    // different implementations for turning on and off
     @Override
     public void turnOn() {
         this.isOn = true;
@@ -24,6 +26,8 @@ public class BudgetLight extends SmartDevice implements SmartLight {
         System.out.println(getName() + " turned OFF instantly.");
     }
 
+    // those functionalities are for Luxury lights,
+    // for simplification Errors are just printed out to show incompatibility
     @Override
     public void setBrightness(int level) {
         System.out.println("Error: " + getName() + " does not support dimming functionality.");

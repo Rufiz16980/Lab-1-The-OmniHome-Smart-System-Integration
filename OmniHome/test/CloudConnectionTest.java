@@ -12,7 +12,7 @@ class CloudConnectionTest {
         CloudConnection conn1 = CloudConnection.getInstance();
         CloudConnection conn2 = CloudConnection.getInstance();
 
-        // Assert they are the EXACT same object in memory
+        // Assert they are the exact same object in memory
         assertSame(conn1, conn2, "Both instances should point to the same memory address");
     }
 

@@ -18,8 +18,9 @@ public class AutomationRoutine {
         this.isRepeatEnabled = isRepeatEnabled;
     }
 
+    //  shows how it uses devices
     public void execute() {
-        System.out.println("--- Executing Routine: " + name + " ---");
+        System.out.println("--- Executing Routine: " + name);
         for (SmartDevice device : devices) {
             device.turnOn();
         }
@@ -43,7 +44,7 @@ public class AutomationRoutine {
 
         public RoutineBuilder atTime(String time) {
             this.scheduleTime = time;
-            return this; // Return "this" to allow chaining
+            return this; // Return this to allow chaining
         }
 
         public RoutineBuilder addDevice(SmartDevice device) {

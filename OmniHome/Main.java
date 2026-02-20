@@ -9,18 +9,17 @@ import az.edu.ada.modules.module04.OmniHome.config.DeviceConfiguration;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("=== OMNIHOME SYSTEM STARTUP ===\n");
 
-        // 1. SINGLETON
+        // singleton
         CloudConnection cloud = CloudConnection.getInstance();
         cloud.sendData("System Initialized");
 
-        // 2. PROTOTYPE
+        // prototype
         System.out.println("\n--- Fetching Network Config ---");
-        DeviceConfiguration masterConfig = new DeviceConfiguration("ZigBee Pro", "v4.5", "AES-256");
+        DeviceConfiguration masterConfig = new DeviceConfiguration("ExtraCoolWiFI Pro", "v4.5", "KYS-1488");
         System.out.println("Master Config Created: " + masterConfig);
 
-        // 3. ABSTRACT FACTORY
+        // abstract factory
         System.out.println("\n--- Deploying Devices ---");
         SmartHomeFactory factory = new LuxuryHomeFactory();
 
@@ -29,25 +28,23 @@ public class Main {
 
         DeviceConfiguration lightConfig = masterConfig.clone();
 
-        // FIX 1: Cast to (SmartDevice) to access getName()
         System.out.println("Configured " + ((SmartDevice) livingRoomLight).getName() + " with " + lightConfig);
 
-        // 4. ADAPTER
+        // adapter
         GlorbThermostat oldHeater = new GlorbThermostat();
         SmartDevice basementHeater = new GlorbAdapter("GLORB-01", oldHeater);
 
-        // 5. BUILDER
+        // builder
         System.out.println("\n--- Building Automation Routine ---");
         AutomationRoutine morningRoutine = new AutomationRoutine.RoutineBuilder("Morning Wake Up")
                 .atTime("07:00 AM")
-                // FIX 2: Cast to (SmartDevice) so it fits into the List<SmartDevice>
                 .addDevice((SmartDevice) livingRoomLight)
                 .addDevice((SmartDevice) mainThermostat)
                 .addDevice(basementHeater) // This is already a SmartDevice, so no cast needed
                 .setRepeat(true)
                 .build();
 
-        // 6. EXECUTE
+        // turn on all devices
         morningRoutine.execute();
 
         System.out.println("\n--- Manual Control Override ---");

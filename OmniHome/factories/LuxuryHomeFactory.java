@@ -8,7 +8,7 @@ import java.util.UUID;
 public class LuxuryHomeFactory implements SmartHomeFactory {
     @Override
     public SmartLight createSmartLight() {
-        // Generating a random ID for the device
+        // Generating a random Id for the device
         return new LuxuryLight(UUID.randomUUID().toString());
     }
 

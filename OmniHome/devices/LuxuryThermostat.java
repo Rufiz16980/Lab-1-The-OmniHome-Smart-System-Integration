@@ -7,7 +7,7 @@ public class LuxuryThermostat extends SmartDevice implements SmartThermostat {
     private double currentTemp = 20.0;
 
     public LuxuryThermostat(String id) {
-        super(id, "Nest Learning Thermostat");
+        super(id, "Super Smart Thermostat");
     }
 
     @Override
