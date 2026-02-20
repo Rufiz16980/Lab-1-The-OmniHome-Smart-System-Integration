@@ -1,14 +1,14 @@
 package az.edu.ada.modules.module04.OmniHome.config;
 
 public class DeviceConfiguration implements Cloneable {
-    private String protocol;
+    private String ipAddress;
+    private int port;
     private String firmwareVersion;
-    private String securityKey;
 
-    public DeviceConfiguration(String protocol, String firmwareVersion, String securityKey) {
-        this.protocol = protocol;
+    public DeviceConfiguration(String ipAddress, int port, String firmwareVersion) {
+        this.ipAddress = ipAddress;
+        this.port = port;
         this.firmwareVersion = firmwareVersion;
-        this.securityKey = securityKey;
         // to show that object creation is time-consuming, cloning would be faster
         try { Thread.sleep(500); } catch (InterruptedException e) { e.printStackTrace(); }
     }
@@ -26,11 +26,11 @@ public class DeviceConfiguration implements Cloneable {
         }
     }
 
-    public void setProtocol(String protocol) { this.protocol = protocol; }
-    public String getProtocol() { return protocol; }
+    public void setIpAddress(String ipAddress) { this.ipAddress = ipAddress; }
+    public String getIpAddress() { return ipAddress; }
 
     @Override
     public String toString() {
-        return "Config [Protocol=" + protocol + ", Firmware=" + firmwareVersion + "]";
+        return "Config [IP=" + ipAddress + ", Port=" + port + ", Firmware=" + firmwareVersion + "]";
     }
 }

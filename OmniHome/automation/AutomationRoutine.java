@@ -6,16 +6,16 @@ import java.util.List;
 
 public class AutomationRoutine {
     private String name;
-    private String scheduleTime; // e.g., "08:00"
+    private String triggerTime; // e.g., "08:00"
     private List<SmartDevice> devices;
-    private boolean isRepeatEnabled;
+    private boolean sendNotification;
 
     // Private constructor: Only the Builder can call this
-    private AutomationRoutine(String name, String scheduleTime, List<SmartDevice> devices, boolean isRepeatEnabled) {
+    private AutomationRoutine(String name, String triggerTime, List<SmartDevice> devices, boolean sendNotification) {
         this.name = name;
-        this.scheduleTime = scheduleTime;
+        this.triggerTime = triggerTime;
         this.devices = devices;
-        this.isRepeatEnabled = isRepeatEnabled;
+        this.sendNotification = sendNotification;
     }
 
     //  shows how it uses devices
@@ -30,20 +30,26 @@ public class AutomationRoutine {
     // Getters for testing
     public String getName() { return name; }
     public List<SmartDevice> getDevices() { return devices; }
+    public String getTriggerTime() { return triggerTime; }
+    public boolean isSendNotification() { return sendNotification; }
 
     // Static inner class for the Builder
     public static class RoutineBuilder {
         private String name;
-        private String scheduleTime;
+        private String triggerTime;
         private List<SmartDevice> devices = new ArrayList<>();
-        private boolean isRepeatEnabled = false;
+        private boolean sendNotification = false;
 
-        public RoutineBuilder(String name) {
+        public RoutineBuilder() {
+        }
+
+        public RoutineBuilder withName(String name) {
             this.name = name;
+            return this;
         }
 
         public RoutineBuilder atTime(String time) {
-            this.scheduleTime = time;
+            this.triggerTime = time;
             return this; // Return this to allow chaining
         }
 
@@ -52,16 +58,19 @@ public class AutomationRoutine {
             return this;
         }
 
-        public RoutineBuilder setRepeat(boolean repeat) {
-            this.isRepeatEnabled = repeat;
+        public RoutineBuilder toggleNotification() {
+            this.sendNotification = !this.sendNotification;
             return this;
         }
 
         public AutomationRoutine build() {
+            if (name == null || name.trim().isEmpty()) {
+                throw new IllegalStateException("Routine must have a name.");
+            }
             if (devices.isEmpty()) {
                 throw new IllegalStateException("Routine must contain at least one device.");
             }
-            return new AutomationRoutine(name, scheduleTime, devices, isRepeatEnabled);
+            return new AutomationRoutine(name, triggerTime, devices, sendNotification);
         }
     }
 }

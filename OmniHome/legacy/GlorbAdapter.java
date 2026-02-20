@@ -31,7 +31,7 @@ public class GlorbAdapter extends SmartDevice implements SmartThermostat {
         int fahrenheit = (int) ((celsius * 9.0 / 5.0) + 32);
 
         System.out.println("Adapter converting " + celsius + "°C -> " + fahrenheit + "°F");
-        glorb.setFahrenheitValue(fahrenheit);
+        glorb.setHeatIndex(fahrenheit);
     }
 
     @Override

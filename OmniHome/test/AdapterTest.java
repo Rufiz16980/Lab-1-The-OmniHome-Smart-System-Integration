@@ -25,7 +25,7 @@ class AdapterTest {
         GlorbAdapter adapter = new GlorbAdapter("LEGACY-02", oldDevice);
 
         // Set Glorb to 212F
-        oldDevice.setFahrenheitValue(212);
+        oldDevice.setHeatIndex(212);
 
         // Adapter should read it as 100C
         assertEquals(100.0, adapter.getTemperature(), 0.1, "Adapter failed to convert 212F back to 100C");

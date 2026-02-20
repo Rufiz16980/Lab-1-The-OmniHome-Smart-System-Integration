@@ -4,4 +4,5 @@ public interface SmartLight {
     void setBrightness(int level);
     void setColor(String hexColor);
     int getBrightness();
+    void turnOn();
 }

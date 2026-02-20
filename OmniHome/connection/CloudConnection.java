@@ -5,9 +5,14 @@ public class CloudConnection {
     private static volatile CloudConnection instance;
     private boolean isConnected;
 
+    private String apiKey;
+    private String serverUrl;
+
     private CloudConnection() {
         System.out.println("Establishing connection to OmniHome Cloud...");
         this.isConnected = true;
+        this.apiKey = "DEFAULT_API_KEY";
+        this.serverUrl = "https://api.omnihome.cloud";
     }
 
     public static CloudConnection getInstance() {
@@ -19,6 +24,22 @@ public class CloudConnection {
             }
         }
         return instance;
+    }
+
+    public void setApiKey(String apiKey) {
+        this.apiKey = apiKey;
+    }
+
+    public void setServerUrl(String serverUrl) {
+        this.serverUrl = serverUrl;
+    }
+
+    public String getApiKey() {
+        return apiKey;
+    }
+
+    public String getServerUrl() {
+        return serverUrl;
     }
 
     public void sendData(String data) {

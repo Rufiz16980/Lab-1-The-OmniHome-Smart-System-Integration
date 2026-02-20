@@ -21,4 +21,13 @@ class CloudConnectionTest {
         CloudConnection conn = CloudConnection.getInstance();
         assertTrue(conn.isConnected(), "Connection should be active upon initialization");
     }
+
+    @Test
+    void testStoresApiKeyAndServerUrl() {
+        CloudConnection conn = CloudConnection.getInstance();
+        conn.setApiKey("TEST_KEY");
+        conn.setServerUrl("https://test.server");
+        assertEquals("TEST_KEY", conn.getApiKey());
+        assertEquals("https://test.server", conn.getServerUrl());
+    }
 }

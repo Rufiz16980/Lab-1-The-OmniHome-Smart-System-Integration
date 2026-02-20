@@ -10,7 +10,7 @@ public class GlorbThermostat {
         return fahrenheitTemp;
     }
 
-    public void setFahrenheitValue(int fahrenheit) {
+    public void setHeatIndex(int fahrenheit) {
         this.fahrenheitTemp = fahrenheit;
         System.out.println("      GLORB SYSTEM      ");
         System.out.println("Setting temp to: " + fahrenheit + "F");
